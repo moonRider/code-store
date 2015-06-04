@@ -1,0 +1,35 @@
+{
+  "server": {
+    "port": 4000,
+    "fileDir": "/server/server",
+    "sourcesDir": "/build"
+  },
+  "sass": {
+    "sourceDir": "/assets/stylesheets",
+    "dest": "/build",
+    "watch": "/**/*.scss",
+    "compile": "/*.scss",
+    "options": {}
+  },
+  "coffee": {
+    "sourceDir": "/assets/script",
+    "dest": "/build",
+    "watch": "/**/*.coffee",
+    "compile": "/**/*.coffee",
+    "options": {}
+  },
+  "jade": {
+    "sourceDir": "/assets/jade",
+    "dest": "/build",
+    "watch": "/**/*.jade",
+    "compile": "/*.jade",
+    "options": {}
+  },
+  "slim": {
+    "sourceDir": "/assets/slim",
+    "dest": "/build",
+    "watch": "/**/*.slim",
+    "compile": "/*.slim",
+    "options": {}
+  }
+}
