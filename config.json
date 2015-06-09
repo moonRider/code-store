@@ -5,11 +5,13 @@
     "sourcesDir": "/build"
   },
   "sass": {
-    "sourceDir": "/assets/stylesheets",
-    "dest": "/build",
+    "sourceDir": "./assets/sass",
+    "dest": "./build",
     "watch": "/**/*.scss",
     "compile": "/*.scss",
-    "options": {}
+    "options": {
+      "outputStyle": "expanded"
+    }
   },
   "coffee": {
     "sourceDir": "/assets/script",

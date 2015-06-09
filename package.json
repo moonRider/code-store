@@ -1,5 +1,8 @@
 {
   "name": "codeStore",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-sass": "*"
+  }
 }
