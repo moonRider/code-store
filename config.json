@@ -14,18 +14,22 @@
     }
   },
   "coffee": {
-    "sourceDir": "/assets/script",
-    "dest": "/build",
+    "sourceDir": "assets/script",
+    "dest": "./build",
     "watch": "/**/*.coffee",
     "compile": "/**/*.coffee",
-    "options": {}
+    "options": {
+      "bare": true
+    }
   },
   "jade": {
-    "sourceDir": "/assets/jade",
-    "dest": "/build",
+    "sourceDir": "assets/jade",
+    "dest": "./build",
     "watch": "/**/*.jade",
     "compile": "/*.jade",
-    "options": {}
+    "options": {
+      "pretty": true
+    }
   },
   "slim": {
     "sourceDir": "/assets/slim",
