@@ -5,7 +5,7 @@
     "sourcesDir": "/build"
   },
   "sass": {
-    "sourceDir": "./assets/sass",
+    "sourceDir": "assets/sass",
     "dest": "./build",
     "watch": "/**/*.scss",
     "compile": "/*.scss",

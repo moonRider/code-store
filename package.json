@@ -3,6 +3,7 @@
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.8.11",
-    "gulp-sass": "*"
+    "gulp-sass": "*",
+    "gulp-plumber": "*"
   }
 }
