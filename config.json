@@ -4,6 +4,14 @@
     "fileDir": "/server/server",
     "sourcesDir": "/build"
   },
+  "test": {
+    "sourceDir": "test",
+    "files": "/**/*.coffee",
+    "options": {
+      "reporter": "dot",
+      "ui": "bdd"
+    }
+  },
   "sass": {
     "sourceDir": "assets/sass",
     "dest": "./build",
