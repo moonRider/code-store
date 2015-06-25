@@ -23,7 +23,7 @@ gulp.task 'mocha', ->
 
 gulp.task 'watch', ->
   gulp.watch "#{config.sass.sourceDir}#{config.sass.watch}", ['sass']
-  gulp.watch "#{config.coffee.sourceDir}#{config.coffee.watch}", ['coffee']
+  gulp.watch "#{config.coffee.sourceDir}#{config.coffee.watch}", ['coffee', 'mocha']
   gulp.watch "#{config.test.sourceDir}#{config.test.files}", ['mocha']
 
 

@@ -11,6 +11,7 @@ class EventEmitter
       value:
         _events: {}
       configurable: true
+      enumerable: false
     }
 
   _extendMethod: ->
@@ -36,8 +37,25 @@ class EventEmitter
           listener.func isnt handle
         return true
 
+      trigger: (event_type, message)->
+        _handles = if @_events? then @_events[event_type] else null
+        return false unless _handles?
+        for _handle in _handles
+          _handle.func.call(_handle.ctx, message)
+        return true
+
+      fire: (event_type, message)->
+        _handles = if @_events? then @_events[event_type] else null
+        return false unless _handles?
+        for _handle in _handles
+          setTimeout ((handle)->
+            return ->
+              handle.func.call(handle.ctx, message)
+          )(_handle), 0
+        return true
+
     for k, v of event_methods
       @_data.emitter[k] = v
 
 
-module.exports = EventEmitter
+module.exports = EventEmitter if module isnt undefined
