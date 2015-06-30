@@ -1,2 +1,2 @@
-## code-store
+# code-store
 My code storehouse
