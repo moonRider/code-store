@@ -1,3 +1,8 @@
 extends ./share/layout.jade
 block body
   p index watched
+  canvas#canvas_paintbrush_test(width='600', height='400')
+    p 你的浏览器不支持canvas
+
+  script(src='../script/CanvasPaintbrush.js')
+  script(src='../script/index.js')
