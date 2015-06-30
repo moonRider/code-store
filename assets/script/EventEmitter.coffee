@@ -1,3 +1,5 @@
+# 给对象实例扩展事件驱动
+
 class EventEmitter
   constructor: (obj)->
     @_data = obj
