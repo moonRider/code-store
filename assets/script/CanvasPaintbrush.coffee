@@ -27,8 +27,8 @@ class CanvasPaintbrush
 
   drawLine: (startpos, endpos, options)->
     @ctx.beginPath()
-    @ctx.moveTo(startpos.x, startpos.y)
+    @ctx.moveTo(startpos.x * 2, startpos.y * 2)
     @_processOptions(options)
-    @ctx.lineTo(endpos.x, endpos.y)
+    @ctx.lineTo(endpos.x * 2, endpos.y * 2)
     @ctx.stroke()
     @
