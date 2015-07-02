@@ -17,13 +17,8 @@ describe 'EventEmitter', ->
       t_emitter.should.has.property('emitter')
     it 'could not create a new object', ->
       t_emitter.should.be.eql _data
-    it 'should not be enumered in for in statement', ->
-      has_emitter = false
-      for k, v of t_emitter
-        if k is 'emitter'
-          has_emitter = true
-          break
-      has_emitter.should.be.false
+    it 'should be not enumerable', ->
+      t_emitter.propertyIsEnumerable('emitter').should.be.false
 
     describe '.emitter', ->
       emitter = t_emitter.emitter
