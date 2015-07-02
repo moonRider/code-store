@@ -3,7 +3,7 @@
 class CanvasPaintbrush
   options:
     # 填充颜色
-    fillColor: '#ffffff'
+    fillColor: 'transparent'
     # 轮廓颜色
     strokeColor: '#000000'
     # 线宽 [number]
@@ -31,4 +31,9 @@ class CanvasPaintbrush
     @_processOptions(options)
     @ctx.lineTo(endpos.x * 2, endpos.y * 2)
     @ctx.stroke()
+    @
+
+  drawRect: (startpos, width, height, options)->
+    @_processOptions(options)
+    @ctx.fillRect(startpos.x * 2, startpos.y * 2, width * 2, height * 2)
     @

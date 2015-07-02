@@ -2,14 +2,17 @@
 class SvgPaintbrush
   options:
     # 填充颜色
-    fillColor: '#ffffff'
+    fillColor: 'transparent'
     # 轮廓颜色
     strokeColor: '#000000'
     # 线宽 [number]
-    lineWidth: 2.0
+    lineWidth: 1.0
 
   constructor: (ctx)->
     @ctx = ctx
+
+  _createSvgElement: (tag)->
+    document.createElementNS('http://www.w3.org/2000/svg', tag)
 
   _processOptions: (element, options)->
     _options = Object.assign {}, @options, options
@@ -18,8 +21,19 @@ class SvgPaintbrush
     element.setAttribute('strokeWidth', _options.lineWidth)
 
   drawLine: (startpos, endpos, options)->
-    line = document.createElementNS('http://www.w3.org/2000/svg','path')
+    line = @_createSvgElement('path')
     line.setAttribute('d', "M#{startpos.x},#{startpos.y} L#{endpos.x},#{endpos.y}")
     @_processOptions(line, options)
     @ctx.appendChild line
+    @
+
+  drawRect: (startpos, width, height, options)->
+    options.strokeColor = 'transparent'
+    rect = @_createSvgElement('rect')
+    rect.setAttribute('x', startpos.x)
+    rect.setAttribute('y', startpos.y)
+    rect.setAttribute('width', width)
+    rect.setAttribute('height', height)
+    @_processOptions(rect, options)
+    @ctx.appendChild rect
     @
