@@ -18,7 +18,7 @@ class SvgPaintbrush
     _options = Object.assign {}, @options, options
     element.setAttribute('stroke', _options.strokeColor)
     element.setAttribute('fill', _options.fillColor)
-    element.setAttribute('strokeWidth', _options.lineWidth)
+    element.setAttribute('stroke-width', _options.lineWidth)
 
   drawLine: (startpos, endpos, options)->
     line = @_createSvgElement('path')
@@ -27,24 +27,20 @@ class SvgPaintbrush
     @ctx.appendChild line
     @
 
-  drawRectBlock: (startpos, width, height, options)->
-    options.strokeColor = 'transparent'
+  drawRect: (startpos, width, height, options)->
     rect = @_createSvgElement('rect')
-    rect.setAttribute('x', startpos.x)
-    rect.setAttribute('y', startpos.y)
-    rect.setAttribute('width', width)
-    rect.setAttribute('height', height)
+    rect.setAttribute 'x', startpos.x
+    rect.setAttribute 'y', startpos.y
+    rect.setAttribute 'width', width
+    rect.setAttribute 'height', height
     @_processOptions(rect, options)
     @ctx.appendChild rect
     @
 
+  drawRectBlock: (startpos, width, height, options)->
+    options.strokeColor = 'transparent'
+    @drawRect(startpos, width, height, options)
+
   drawRectBox: (startpos, width, height, options)->
     options.fillColor = 'transparent'
-    rect = @_createSvgElement('rect')
-    rect.setAttribute('x', startpos.x)
-    rect.setAttribute('y', startpos.y)
-    rect.setAttribute('width', width)
-    rect.setAttribute('height', height)
-    @_processOptions(rect, options)
-    @ctx.appendChild rect
-    @
+    @drawRect(startpos, width, height, options)
