@@ -60,4 +60,4 @@ class EventEmitter
       @_data.emitter[k] = v
 
 
-module.exports = EventEmitter if module isnt undefined
+module.exports = EventEmitter if module?

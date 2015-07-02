@@ -40,4 +40,4 @@ Shims =
 
 Shims.init()
 
-module.exports = Shims if module isnt undefined
+module.exports = Shims if module?
