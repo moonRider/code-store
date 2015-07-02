@@ -7,6 +7,7 @@ window.onload = ->
     .drawRectBlock {x: 30, y: 5}, 20, 290, {fillColor: 'red'}
     .drawRectBox {x: 55, y: 5}, 20, 290, {strokeColor: 'green'}
     .drawRect {x: 85, y: 5}, 20, 290, {strokeColor: 'red', fillColor: 'green', lineWidth: 5}
+    .drawPolyLine [{x: 125, y: 5}, {x: 140, y: 10}, {x: 130, y: 200}, {x: 135, y: 290}], {strokeColor: 'green'}
 
   svg = document.getElementById('svg_paintbrush_test')
   svg_paint = new SvgPaintbrush(svg)
@@ -16,3 +17,4 @@ window.onload = ->
     .drawRectBlock {x: 30, y: 5}, 20, 290, {fillColor: 'red'}
     .drawRectBox {x: 55, y: 5}, 20, 290, {strokeColor: 'green'}
     .drawRect {x: 85, y: 5}, 20, 290, {strokeColor: 'red', fillColor: 'green', lineWidth: 5}
+    .drawPolyLine [{x: 125, y: 5}, {x: 140, y: 10}, {x: 130, y: 200}, {x: 135, y: 290}], {strokeColor: 'green'}

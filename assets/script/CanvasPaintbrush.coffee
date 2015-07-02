@@ -48,3 +48,13 @@ class CanvasPaintbrush
     @_processOptions(options)
     @ctx.strokeRect(startpos.x * 2, startpos.y * 2, width * 2, height * 2)
     @
+
+  drawPolyLine: (points, options)->
+    return @ if points.length < 2
+    @ctx.beginPath()
+    @_processOptions(options)
+    @ctx.moveTo points[0].x * 2, points[0].y * 2
+    for i in [1...points.length]
+      @ctx.lineTo points[i].x * 2, points[i].y * 2
+    @ctx.stroke()
+    @
