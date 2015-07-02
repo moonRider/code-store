@@ -4,11 +4,13 @@ window.onload = ->
 
   paint
     .drawLine {x: 5, y: 5}, {x: 25, y: 295}, {strokeColor: 'green'}
-    .drawRect {x: 30, y: 5}, 20, 290, {fillColor: 'red'}
+    .drawRectBlock {x: 30, y: 5}, 20, 290, {fillColor: 'red'}
+    .drawRectBox {x: 55, y: 5}, 20, 290, {strokeColor: 'green'}
 
   svg = document.getElementById('svg_paintbrush_test')
   svg_paint = new SvgPaintbrush(svg)
 
   svg_paint
     .drawLine {x: 5, y: 5}, {x: 25, y: 295}, {strokeColor: 'green'}
-    .drawRect {x: 30, y: 5}, 20, 290, {fillColor: 'red'}
+    .drawRectBlock {x: 30, y: 5}, 20, 290, {fillColor: 'red'}
+    .drawRectBox {x: 55, y: 5}, 20, 290, {strokeColor: 'green'}

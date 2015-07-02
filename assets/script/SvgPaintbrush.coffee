@@ -27,8 +27,19 @@ class SvgPaintbrush
     @ctx.appendChild line
     @
 
-  drawRect: (startpos, width, height, options)->
+  drawRectBlock: (startpos, width, height, options)->
     options.strokeColor = 'transparent'
+    rect = @_createSvgElement('rect')
+    rect.setAttribute('x', startpos.x)
+    rect.setAttribute('y', startpos.y)
+    rect.setAttribute('width', width)
+    rect.setAttribute('height', height)
+    @_processOptions(rect, options)
+    @ctx.appendChild rect
+    @
+
+  drawRectBox: (startpos, width, height, options)->
+    options.fillColor = 'transparent'
     rect = @_createSvgElement('rect')
     rect.setAttribute('x', startpos.x)
     rect.setAttribute('y', startpos.y)

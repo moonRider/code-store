@@ -33,7 +33,12 @@ class CanvasPaintbrush
     @ctx.stroke()
     @
 
-  drawRect: (startpos, width, height, options)->
+  drawRectBlock: (startpos, width, height, options)->
     @_processOptions(options)
     @ctx.fillRect(startpos.x * 2, startpos.y * 2, width * 2, height * 2)
+    @
+
+  drawRectBox: (startpos, width, height, options)->
+    @_processOptions(options)
+    @ctx.strokeRect(startpos.x * 2, startpos.y * 2, width * 2, height * 2)
     @
