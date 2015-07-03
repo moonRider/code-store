@@ -14,7 +14,7 @@ class CanvasPaintbrush
     lineJoin: 'mitter'
 
   constructor: (ctx)->
-    @ctx = ctx
+    @ctx = ctx.getContext('2d')
 
   _processOptions: (options)->
     _options = Object.assign {}, @options, options
