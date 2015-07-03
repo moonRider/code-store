@@ -70,3 +70,19 @@ class CanvasPaintbrush
     @ctx.fill()
     @ctx.stroke()
     @
+
+  drawBezier: (startpos, ctp1, ctp2, endpos, options)->
+    @ctx.beginPath()
+    @_processOptions(options)
+    @ctx.moveTo startpos.x * 2, startpos.y * 2
+    @ctx.bezierCurveTo ctp1.x * 2, ctp1.y * 2, ctp2.x * 2, ctp2.y * 2, endpos.x * 2, endpos.y * 2
+    @ctx.stroke()
+    @
+
+  drawQuadratic: (startpos, ctpos, endpos, options)->
+    @ctx.beginPath()
+    @_processOptions(options)
+    @ctx.moveTo startpos.x * 2, startpos.y * 2
+    @ctx.quadraticCurveTo ctpos.x * 2, ctpos.y * 2, endpos.x * 2, endpos.y *2
+    @ctx.stroke()
+    @

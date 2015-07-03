@@ -68,3 +68,16 @@ class SvgPaintbrush
     @ctx.appendChild path
     @
 
+  drawBezier: (startpos, ctp1, ctp2, endpos, options)->
+    path = @_createSvgElement('path')
+    path.setAttribute 'd', "M#{startpos.x},#{startpos.y} C#{ctp1.x},#{ctp1.y} #{ctp2.x},#{ctp2.y} #{endpos.x},#{endpos.y}"
+    @_processOptions(path, options)
+    @ctx.appendChild path
+    @
+
+  drawQuadratic: (startpos, ctpos, endpos, options)->
+    path = @_createSvgElement('path')
+    path.setAttribute 'd', "M#{startpos.x},#{startpos.y} Q#{ctpos.x},#{ctpos.y} #{endpos.x},#{endpos.y}"
+    @_processOptions(path, options)
+    @ctx.appendChild path
+    @
