@@ -24,6 +24,14 @@ class CanvasPaintbrush
     @ctx.lineCap = _options.lineCap
     @ctx.lineJoin = _options.lineJoin
 
+  _processAngle: (startAngle, endAngle)->
+    startAngle = startAngle - Math.floor(startAngle /(Math.PI * 2))* Math.PI * 2
+    endAngle = endAngle - Math.floor(endAngle /(Math.PI * 2))* Math.PI * 2
+    endAngle += Math.PI * 2 if startAngle > endAngle
+    _result =
+      startAngle: startAngle
+      endAngle: endAngle
+
   drawLine: (startpos, endpos, options)->
     @ctx.beginPath()
     @ctx.moveTo(startpos.x * 2, startpos.y * 2)
@@ -89,10 +97,19 @@ class CanvasPaintbrush
 
   drawSector: (centerpos, radius, startAngle, endAngle, options)->
     @_processOptions(options)
+    angles = @_processAngle(startAngle, endAngle)
     @ctx.beginPath()
-    @ctx.arc centerpos.x * 2, centerpos.y * 2, radius * 2, startAngle, endAngle, false
+    @ctx.arc centerpos.x * 2, centerpos.y * 2, radius * 2, angles.startAngle, angles.endAngle, false
     @ctx.lineTo centerpos.x * 2, centerpos.y * 2
     @ctx.closePath()
     @ctx.fill()
+    @ctx.stroke()
+    @
+
+  drawArc: (centerpos, radius, startAngle, endAngle, options)->
+    @_processOptions(options)
+    angles = @_processAngle(startAngle, endAngle)
+    @ctx.beginPath()
+    @ctx.arc centerpos.x * 2, centerpos.y * 2, radius * 2, angles.startAngle, angles.endAngle, false
     @ctx.stroke()
     @

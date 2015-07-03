@@ -14,6 +14,14 @@ class SvgPaintbrush
   _createSvgElement: (tag)->
     document.createElementNS('http://www.w3.org/2000/svg', tag)
 
+  _processAngle: (startAngle, endAngle)->
+    startAngle = startAngle - Math.floor(startAngle /(Math.PI * 2))* Math.PI * 2
+    endAngle = endAngle - Math.floor(endAngle /(Math.PI * 2))* Math.PI * 2
+    endAngle += Math.PI * 2 if startAngle > endAngle
+    _result =
+      startAngle: startAngle
+      endAngle: endAngle
+
   _praseCoordinate: (centerpos, radius, angle)->
     _pos =
       x: centerpos.x + radius * Math.cos(angle)
@@ -88,11 +96,23 @@ class SvgPaintbrush
     @
 
   drawSector: (centerpos, radius, startAngle, endAngle, options)->
-    startpos = @_praseCoordinate(centerpos, radius, startAngle)
-    endpos = @_praseCoordinate(centerpos, radius, endAngle)
-    LargeArcFlag = if (endAngle - startAngle > Math.PI) then 1 else 0
+    angles = @_processAngle(startAngle, endAngle)
+    startpos = @_praseCoordinate(centerpos, radius, angles.startAngle)
+    endpos = @_praseCoordinate(centerpos, radius, angles.endAngle)
+    LargeArcFlag = if (angles.endAngle - angles.startAngle > Math.PI) then 1 else 0
     path = @_createSvgElement('path')
     path.setAttribute 'd', "M#{centerpos.x},#{centerpos.y} L#{startpos.x},#{startpos.y} A#{radius},#{radius} 0 #{LargeArcFlag} 1 #{endpos.x},#{endpos.y} Z"
+    @_processOptions(path, options)
+    @ctx.appendChild path
+    @
+
+  drawArc: (centerpos, radius, startAngle, endAngle, options)->
+    angles = @_processAngle(startAngle, endAngle)
+    startpos = @_praseCoordinate(centerpos, radius, angles.startAngle)
+    endpos = @_praseCoordinate(centerpos, radius, angles.endAngle)
+    LargeArcFlag = if (angles.endAngle - angles.startAngle > Math.PI) then 1 else 0
+    path = @_createSvgElement('path')
+    path.setAttribute 'd', "M#{startpos.x},#{startpos.y} A#{radius},#{radius} 0 #{LargeArcFlag} 1 #{endpos.x},#{endpos.y}"
     @_processOptions(path, options)
     @ctx.appendChild path
     @
