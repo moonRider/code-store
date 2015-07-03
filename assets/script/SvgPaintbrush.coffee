@@ -55,3 +55,16 @@ class SvgPaintbrush
     @_processOptions(path, options)
     @ctx.appendChild path
     @
+
+  drawPolygon: (points, options)->
+    return @ if points.length < 3
+    path = @_createSvgElement('path')
+    directive = "M#{points[0].x},#{points[0].y}"
+    for i in [1...points.length]
+      directive += " L#{points[i].x},#{points[i].y}"
+    directive += ' Z'
+    path.setAttribute 'd', directive
+    @_processOptions(path, options)
+    @ctx.appendChild path
+    @
+

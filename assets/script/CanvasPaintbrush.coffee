@@ -58,3 +58,15 @@ class CanvasPaintbrush
       @ctx.lineTo points[i].x * 2, points[i].y * 2
     @ctx.stroke()
     @
+
+  drawPolygon: (points, options)->
+    return @ if points.length < 3
+    @ctx.beginPath()
+    @_processOptions(options)
+    @ctx.moveTo points[0].x * 2, points[0].y * 2
+    for i in [1...points.length]
+      @ctx.lineTo points[i].x * 2, points[i].y * 2
+    @ctx.closePath()
+    @ctx.fill()
+    @ctx.stroke()
+    @

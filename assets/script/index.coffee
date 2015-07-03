@@ -8,6 +8,7 @@ window.onload = ->
     .drawRectBox {x: 55, y: 5}, 20, 290, {strokeColor: 'green'}
     .drawRect {x: 85, y: 5}, 20, 290, {strokeColor: 'red', fillColor: 'green', lineWidth: 5}
     .drawPolyLine [{x: 125, y: 5}, {x: 140, y: 10}, {x: 130, y: 200}, {x: 135, y: 290}], {strokeColor: 'green'}
+    .drawPolygon [{x: 170, y: 20}, {x: 190, y: 60}, {x: 180, y: 80}, {x: 160, y: 50}], {fillColor: 'red', strokeColor: 'green', lineWidth: 5}
 
   svg = document.getElementById('svg_paintbrush_test')
   svg_paint = new SvgPaintbrush(svg)
@@ -18,3 +19,4 @@ window.onload = ->
     .drawRectBox {x: 55, y: 5}, 20, 290, {strokeColor: 'green'}
     .drawRect {x: 85, y: 5}, 20, 290, {strokeColor: 'red', fillColor: 'green', lineWidth: 5}
     .drawPolyLine [{x: 125, y: 5}, {x: 140, y: 10}, {x: 130, y: 200}, {x: 135, y: 290}], {strokeColor: 'green'}
+    .drawPolygon [{x: 170, y: 20}, {x: 190, y: 60}, {x: 180, y: 80}, {x: 160, y: 50}], {fillColor: 'red', strokeColor: 'green', lineWidth: 5}
