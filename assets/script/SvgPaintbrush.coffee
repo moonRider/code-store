@@ -7,6 +7,10 @@ class SvgPaintbrush
     strokeColor: '#000000'
     # 线宽 [number]
     lineWidth: 1.0
+    # 字体大小
+    fontSize: 11
+    # 字体
+    fontFamily: 'sans-serif'
 
   constructor: (ctx)->
     @ctx = ctx
@@ -29,9 +33,11 @@ class SvgPaintbrush
 
   _processOptions: (element, options)->
     _options = Object.assign {}, @options, options
-    element.setAttribute('stroke', _options.strokeColor)
-    element.setAttribute('fill', _options.fillColor)
-    element.setAttribute('stroke-width', _options.lineWidth)
+    element.setAttribute 'stroke', _options.strokeColor
+    element.setAttribute 'fill', _options.fillColor
+    element.setAttribute 'stroke-width', _options.lineWidth
+    element.setAttribute 'font-size', _options.fontSize
+    element.setAttribute 'font-family', _options.fontFamily
 
   drawLine: (startpos, endpos, options)->
     line = @_createSvgElement('path')
@@ -124,5 +130,17 @@ class SvgPaintbrush
     circle.setAttribute 'r', radius
     @_processOptions(circle, options)
     @ctx.appendChild circle
+    @
+
+  drawText: (text_str, pos, options)->
+    text = @_createSvgElement('text')
+    text.setAttribute 'x', pos.x
+    text.setAttribute 'y', pos.y
+    text.setAttribute 'transform', "rotate(#{options.rotate * 180 / Math.PI} #{pos.x},#{pos.y})" if options.rotate?
+    tspan = @_createSvgElement('tspan')
+    tspan.textContent = text_str
+    @_processOptions(text, options)
+    text.appendChild tspan
+    @ctx.appendChild text
     @
 

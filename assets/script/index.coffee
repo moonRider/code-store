@@ -15,6 +15,8 @@ window.onload = ->
     .drawArc {x: 310, y: 170}, 50, Math.PI * 0.2, Math.PI * -.3, {strokeColor: 'red', lineWidth: 3}
     .drawCircle {x: 420, y: 60}, 50, {strokeColor: 'green', fillColor: 'yellow', lineWidth: 2}
     .drawCircle {x: 420, y: 170}, 50, {strokeColor: 'red', fillColor: 'transparent', lineWidth: 10}
+    .drawText '去你大爷的', {x: 510, y: 20}, {rotate: Math.PI * 0.25, maxWidth: 90, strokeColor: 'red', fillColor: 'red'}
+    .drawText '去你大爷的', {x: 510, y: 20}, {maxWidth: 90, strokeColor: 'green', fillColor: 'green'}
 
   svg = document.getElementById('svg_paintbrush_test')
   svg_paint = new SvgPaintbrush(svg)
@@ -32,3 +34,5 @@ window.onload = ->
     .drawArc {x: 310, y: 170}, 50, Math.PI * 0.2, Math.PI * -.3, {strokeColor: 'red', lineWidth: 3}
     .drawCircle {x: 420, y: 60}, 50, {strokeColor: 'green', fillColor: 'yellow', lineWidth: 2}
     .drawCircle {x: 420, y: 170}, 50, {strokeColor: 'red', fillColor: 'transparent', lineWidth: 10}
+    .drawText '去你大爷的', {x: 510, y: 20}, {rotate: Math.PI * 0.25, maxWidth: 90, strokeColor: 'red', fillColor: 'red'}
+    .drawText '去你大爷的', {x: 510, y: 20}, {maxWidth: 90, strokeColor: 'green', fillColor: 'green'}

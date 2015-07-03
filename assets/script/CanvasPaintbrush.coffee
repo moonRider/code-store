@@ -121,3 +121,18 @@ class CanvasPaintbrush
     @ctx.fill()
     @ctx.stroke()
     @
+
+  drawText: (text, pos, options)->
+    @_processOptions(options)
+    @ctx.save()
+    if options.rotate?
+      @ctx.translate pos.x * 2, pos.y * 2
+      @ctx.rotate options.rotate
+      @ctx.fillText text, 0, 0, (options.maxWidth or 10000) * 2
+      @ctx.strokeText text, 0, 0, (options.maxWidth or 10000) * 2
+      @ctx.translate -pos.x * 2, -pos.y * 2
+    else
+      @ctx.fillText text, pos.x * 2, pos.y * 2, (options.maxWidth or 10000) * 2
+      @ctx.strokeText text, pos.x * 2, pos.y * 2, (options.maxWidth or 10000) * 2
+    @ctx.restore()
+    @
