@@ -66,6 +66,10 @@ class CanvasPaintbrush
       endAngle: endAngle
 
   # Public method
+  setGlobalOptions: (options)->
+    Object.assign @options, options
+    @
+
   drawLine: (startpos, endpos, options)->
     @_processShapeOptions(options)
     @ctx.beginPath()

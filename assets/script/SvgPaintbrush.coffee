@@ -58,6 +58,10 @@ class SvgPaintbrush
       element.setAttribute k, v
 
   # Public method
+  setGlobalOptions: (options)->
+    Object.assign @options, options
+    @
+
   drawLine: (startpos, endpos, options)->
     line = @_createSvgElement('path')
     line.setAttribute('d', "M#{startpos.x},#{startpos.y} L#{endpos.x},#{endpos.y}")
