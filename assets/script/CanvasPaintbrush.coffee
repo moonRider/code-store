@@ -86,3 +86,13 @@ class CanvasPaintbrush
     @ctx.quadraticCurveTo ctpos.x * 2, ctpos.y * 2, endpos.x * 2, endpos.y *2
     @ctx.stroke()
     @
+
+  drawSector: (centerpos, radius, startAngle, endAngle, options)->
+    @_processOptions(options)
+    @ctx.beginPath()
+    @ctx.arc centerpos.x * 2, centerpos.y * 2, radius * 2, startAngle, endAngle, false
+    @ctx.lineTo centerpos.x * 2, centerpos.y * 2
+    @ctx.closePath()
+    @ctx.fill()
+    @ctx.stroke()
+    @

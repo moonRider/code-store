@@ -14,6 +14,11 @@ class SvgPaintbrush
   _createSvgElement: (tag)->
     document.createElementNS('http://www.w3.org/2000/svg', tag)
 
+  _praseCoordinate: (centerpos, radius, angle)->
+    _pos =
+      x: centerpos.x + radius * Math.cos(angle)
+      y: centerpos.y + radius * Math.sin(angle)
+
   _processOptions: (element, options)->
     _options = Object.assign {}, @options, options
     element.setAttribute('stroke', _options.strokeColor)
@@ -78,6 +83,16 @@ class SvgPaintbrush
   drawQuadratic: (startpos, ctpos, endpos, options)->
     path = @_createSvgElement('path')
     path.setAttribute 'd', "M#{startpos.x},#{startpos.y} Q#{ctpos.x},#{ctpos.y} #{endpos.x},#{endpos.y}"
+    @_processOptions(path, options)
+    @ctx.appendChild path
+    @
+
+  drawSector: (centerpos, radius, startAngle, endAngle, options)->
+    startpos = @_praseCoordinate(centerpos, radius, startAngle)
+    endpos = @_praseCoordinate(centerpos, radius, endAngle)
+    LargeArcFlag = if (endAngle - startAngle > Math.PI) then 1 else 0
+    path = @_createSvgElement('path')
+    path.setAttribute 'd', "M#{centerpos.x},#{centerpos.y} L#{startpos.x},#{startpos.y} A#{radius},#{radius} 0 #{LargeArcFlag} 1 #{endpos.x},#{endpos.y} Z"
     @_processOptions(path, options)
     @ctx.appendChild path
     @

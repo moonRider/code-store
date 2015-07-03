@@ -11,6 +11,7 @@ window.onload = ->
     .drawPolygon [{x: 170, y: 20}, {x: 190, y: 60}, {x: 180, y: 80}, {x: 160, y: 50}], {fillColor: 'red', strokeColor: 'green', lineWidth: 5}
     .drawBezier {x: 200, y: 10}, {x: 195, y: 40}, {x: 240, y: 40}, {x: 220, y: 80}, {strokeColor: 'red', lineWidth: 2}
     .drawQuadratic {x: 170, y: 100}, {x: 200, y: 280}, {x: 240, y: 130}, {strokeColor: 'green', lineWidth: 2}
+    .drawSector {x: 310, y: 60}, 50, 0, Math.PI * 1.7, {strokeColor: 'green', fillColor: 'yellow', lineWidth: 5}
 
   svg = document.getElementById('svg_paintbrush_test')
   svg_paint = new SvgPaintbrush(svg)
@@ -24,3 +25,4 @@ window.onload = ->
     .drawPolygon [{x: 170, y: 20}, {x: 190, y: 60}, {x: 180, y: 80}, {x: 160, y: 50}], {fillColor: 'red', strokeColor: 'green', lineWidth: 5}
     .drawBezier {x: 200, y: 10}, {x: 195, y: 40}, {x: 240, y: 40}, {x: 220, y: 80}, {strokeColor: 'red', lineWidth: 2}
     .drawQuadratic {x: 170, y: 100}, {x: 200, y: 280}, {x: 240, y: 130}, {strokeColor: 'green', lineWidth: 2}
+    .drawSector {x: 310, y: 60}, 50, 0, Math.PI * 1.7, {strokeColor: 'green', fillColor: 'yellow', lineWidth: 5}
