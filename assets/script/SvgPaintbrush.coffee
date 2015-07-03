@@ -116,3 +116,13 @@ class SvgPaintbrush
     @_processOptions(path, options)
     @ctx.appendChild path
     @
+
+  drawCircle: (centerpos, radius, options)->
+    circle = @_createSvgElement('circle')
+    circle.setAttribute 'cx', centerpos.x
+    circle.setAttribute 'cy', centerpos.y
+    circle.setAttribute 'r', radius
+    @_processOptions(circle, options)
+    @ctx.appendChild circle
+    @
+

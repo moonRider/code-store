@@ -113,3 +113,11 @@ class CanvasPaintbrush
     @ctx.arc centerpos.x * 2, centerpos.y * 2, radius * 2, angles.startAngle, angles.endAngle, false
     @ctx.stroke()
     @
+
+  drawCircle: (centerpos, radius, options)->
+    @_processOptions(options)
+    @ctx.beginPath()
+    @ctx.arc centerpos.x * 2, centerpos.y * 2, radius * 2, 0, Math.PI * 2, false
+    @ctx.fill()
+    @ctx.stroke()
+    @
