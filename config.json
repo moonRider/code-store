@@ -1,7 +1,9 @@
 {
   "server": {
     "port": 4000,
-    "sourceDir": "build"
+    "sourceDir": "build",
+    "serverFile": "./server/server.coffee",
+    "custom": true
   },
   "test": {
     "sourceDir": "test",

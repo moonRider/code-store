@@ -7,6 +7,7 @@ coffee = require 'gulp-coffee'
 plumber = require 'gulp-plumber'
 mocha = require 'gulp-mocha'
 connect = require 'gulp-connect'
+custom_server = require config.server.serverFile
 
 gulp.task 'sass', ->
   gulp.src "#{config.sass.sourceDir}#{config.sass.compile}", {base: 'assets'}
@@ -32,9 +33,12 @@ gulp.task 'mocha', ->
     .pipe mocha(config.test.options)
 
 gulp.task 'server', ->
-  connect.server
-    port: config.server.port
-    root: config.server.sourceDir
+  if config.server.custom
+    custom_server.start(config.server.port, config.server.sourceDir)
+  else
+    connect.server
+      port: config.server.port
+      root: config.server.sourceDir
 
 gulp.task 'watch', ->
   gulp.watch "#{config.sass.sourceDir}#{config.sass.watch}", ['sass']
