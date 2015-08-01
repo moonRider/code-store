@@ -23,5 +23,7 @@ Server =
     server.sourcePath = sourcePath or './build'
     server.listen(port)
     console.log "server had start on #{port}"
+  stop: ->
+    server.close()
 
 module.exports = Server
