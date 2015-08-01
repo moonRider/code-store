@@ -6,11 +6,9 @@ route = (request, response)->
   req = http.request
     port: '5000'
   , (res)->
-    res.on 'data', (chunk)->
-      response.end(chunk)
+    res.pipe(response)
 
   req.on 'error', (e)->
-    console.log e.message
     response.end('not found')
 
   req.end()
