@@ -19,7 +19,9 @@ Router = (request, response)->
   else
     req = http.request
       port: 5000
+      headers: request.headers
     , (res)->
+      response.writeHead(200, res.headers)
       res.pipe(response)
     req.on 'error', (e)->
       response.end 'not found'
