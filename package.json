@@ -3,6 +3,7 @@
   "descritpion": "My code storehouse",
   "repository": "https://github.com/moonRider/code-store.git",
   "author": "solor.pom <solar.pom@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "should": "*"
   },
