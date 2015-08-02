@@ -16,6 +16,7 @@
     "gulp-mocha": "^2.1.0",
     "gulp-connect": "^2.*.*",
     "gulp-jade": "^1.0.0",
-    "gulp-jade-globbing": "^0.1.6"
+    "gulp-jade-globbing": "^0.1.6",
+    "send": "^0.13.0"
   }
 }
