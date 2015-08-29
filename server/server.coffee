@@ -1,16 +1,8 @@
 'use strict'
+app = require './app.coffee'
 http = require 'http'
-router = require './router.coffee'
+server_config = require('../config.json').server
 
-server = http.createServer (req, res)->
-  router(req, res)
+_servers = {}
 
-Server =
-  start: (port, sourcePath)->
-    server.sourcePath = sourcePath or './build'
-    server.listen(port)
-    console.log "server had start on #{port}"
-  stop: ->
-    server.close()
-
-module.exports = Server
+http.createServer(app).listen server_config.port

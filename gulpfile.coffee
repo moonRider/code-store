@@ -7,7 +7,9 @@ coffee = require 'gulp-coffee'
 plumber = require 'gulp-plumber'
 mocha = require 'gulp-mocha'
 connect = require 'gulp-connect'
-custom_server = require config.server.serverFile
+exec = require('child_process').exec
+
+server_process = null
 
 gulp.task 'sass', ->
   gulp.src "#{config.sass.sourceDir}#{config.sass.compile}", {base: 'assets'}
@@ -34,17 +36,24 @@ gulp.task 'mocha', ->
 
 gulp.task 'server', ->
   if config.server.custom
-    custom_server.start(config.server.port, config.server.sourceDir)
+    server_process = exec "coffee #{config.server.serverFile}", {cwd: process.cwd(), env: process.env}, (error)->
+    console.log 'server has started'
   else
     connect.server
       port: config.server.port
       root: config.server.sourceDir
+
+gulp.task 'restart', ->
+  if config.server.custom
+    process.kill(server_process.pid)
+    server_process = exec "coffee #{config.server.serverFile}", {cwd: process.cwd(), env: process.env}, (error)->
+    console.log 'server has restarted'
 
 gulp.task 'watch', ->
   gulp.watch "#{config.sass.sourceDir}#{config.sass.watch}", ['sass']
   gulp.watch "#{config.coffee.sourceDir}#{config.coffee.watch}", ['coffee', 'mocha']
   gulp.watch "#{config.test.sourceDir}#{config.test.files}", ['mocha']
   gulp.watch "#{config.jade.sourceDir}#{config.jade.watch}", ['jade']
-
+  gulp.watch "#{config.server.watch}", ['restart']
 
 gulp.task 'default', ['sass', 'jade', 'coffee', 'server', 'watch']
