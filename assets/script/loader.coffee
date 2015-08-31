@@ -1,4 +1,7 @@
 class Loader
+  constructor: (fetcher)->
+    @fetcher = fetcher or @constructor.prototype.fetcher
+
   @sources_map: {}
   @sources: {}
 
@@ -33,9 +36,6 @@ class Loader
   fetcher: (url)->
     if $? and $.getJSON
       xhr = $.getJSON url
-
-  constructor: (fetcher)->
-    @fetcher = fetcher
 
   load: (sources, options)->
     options = Object.assign {}, @defaultOptions, options
