@@ -17,8 +17,8 @@ class Loader
     delete @constructor.sources[name]
 
   @clear: ->
-    @sources_map = {}
-    @sources = {}
+    @constructor.sources_map = {}
+    @constructor.sources = {}
 
   @removeSoure: (name)->
     delete @constructor.sources[name]
